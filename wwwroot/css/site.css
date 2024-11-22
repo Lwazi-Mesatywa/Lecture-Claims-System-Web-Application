@@ -18,6 +18,11 @@ html {
     transition: width 0.3s ease-in-out;
 }
 
+#total-amount {
+    font-weight: bold;
+    color: #4caf50;
+}
+
 
 @media (min-width: 768px) {
   html {

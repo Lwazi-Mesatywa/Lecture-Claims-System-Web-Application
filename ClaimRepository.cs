@@ -53,12 +53,7 @@ namespace Lecturer_Monthly_Claims__ST10092086
 
         public void PreloadClaims()
         {
-            // Preload 5 sample claims
-            AllClaims.Add(new Claim("lecturer1", new DateTime(2024, 1, 15), 150.00));
-            AllClaims.Add(new Claim("lecturer2", new DateTime(2024, 2, 20), 250.00));
-            AllClaims.Add(new Claim("lecturer3", new DateTime(2024, 3, 10), 300.00));
-            AllClaims.Add(new Claim("lecturer1", new DateTime(2024, 4, 5), 200.00));
-            AllClaims.Add(new Claim("lecturer2", new DateTime(2024, 5, 25), 100.00));
+            
         }
     }
 }

@@ -26,9 +26,26 @@ namespace Lecturer_Monthly_Claims__ST10092086
         public double Amount { get; set; }
 
         public string Notes { get; set; }
+        public string Status { get; set; } // Pending, Approved, Rejected
+        public bool HasFileAttachment { get; set; }
 
         public DateTime ClaimDate { get; set; } = DateTime.Now;
 
         public byte[] FileAttachment { get; set; }
+
+        // Parameterless constructor for object initializers
+        public Claim() { }
+
+        public Claim(string lecturerUsername, DateTime claimDate, double amount, string status,
+                 bool hasFileAttachment, byte[] fileContent, string notes)
+        {
+            LecturerUsername = lecturerUsername;
+            ClaimDate = claimDate;
+            Amount = amount;
+            Status = status;
+            HasFileAttachment = hasFileAttachment;
+            FileAttachment = fileContent;
+            Notes = notes;
+        }
     }
 }

@@ -21,6 +21,11 @@
     </div>
 
     <div>
+        <label>Total Amount Owed:</label>
+        <input type="text" id="total-amount" readonly style="background-color: #f0f0f0;" />
+    </div>
+
+    <div>
         <label>Notes:</label>
         <textarea asp-for="Notes"></textarea>
     </div>
@@ -34,6 +39,7 @@
 </form>
 
 @section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const fields = document.querySelectorAll(".progress-field");
@@ -61,6 +67,24 @@
 
             // Trigger update on page load to account for pre-filled fields
             updateProgressBar();
+        });
+        $(document).ready(function () {
+            function calculateTotal() {
+                // Get the values of hours worked and hourly rate
+                const hoursWorked = parseFloat($("#hours-worked").val()) || 0; // Default to 0 if empty or invalid
+                const hourlyRate = parseFloat($("#hourly-rate").val()) || 0;   // Default to 0 if empty or invalid
+
+                // Calculate total amount owed
+                const totalAmount = hoursWorked * hourlyRate;
+
+                // Display the total in the Total Amount field
+                $("#total-amount").val(totalAmount.toFixed(2)); // Format to 2 decimal places
+            }
+
+            // Attach change event listeners to calculation fields
+            $(".calculation-field").on("input", function () {
+                calculateTotal();
+            });
         });
     </script>
 }
