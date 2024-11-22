@@ -1,35 +1,34 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using Grpc.Core;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lecture_Claims_System_Web_Application.Controllers
 {
     public class HRController : Controller
     {
+        private readonly IWebHostEnvironment _webHostEnvironment;
         public IActionResult Report()
         {
             // Load the report
             ReportDocument reportDocument = new ReportDocument();
-            reportDocument.Load(Server.MapPath("~/Reports/ClaimReport.rpt"));
+
+            // Get the path of the Crystal Report file
+            string reportPath = System.IO.Path.Combine(_webHostEnvironment.ContentRootPath, "Reports", "ClaimReport.rpt");
+            reportDocument.Load(reportPath);
 
             //  pass data from your claim repository to the report
             var acceptedClaims = ClaimRepository.Instance.AllClaims
                 .Where(c => c.Status == "Accepted")
                 .ToList();
 
-            // setting data source for the report
             reportDocument.SetDataSource(acceptedClaims);
 
-            //Create a Crystal Report viewer
-            CrystalReportViewer reportViewer = new CrystalReportViewer
-           {
-               ReportSource = reportDocument
-           };
+            // Export to a temporary file (PDF for demonstration)
+            var stream = reportDocument.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
 
-            // Render the report on the view
-            ViewBag.ReportViewer = reportViewer;
-
-            return View();
+            // Return the report as a PDF file
+            return File(stream, "application/pdf", "AcceptedClaimsReport.pdf");
         }
 
         [HttpGet]
