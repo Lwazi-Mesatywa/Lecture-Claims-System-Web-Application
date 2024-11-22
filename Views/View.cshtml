@@ -1,0 +1,63 @@
+﻿@model Lecturer_Monthly_Claims__ST10092086.Claim
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<h4>Claim</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="View">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LecturerUsername" class="control-label"></label>
+                <input asp-for="LecturerUsername" class="form-control" />
+                <span asp-validation-for="LecturerUsername" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClaimDate" class="control-label"></label>
+                <input asp-for="ClaimDate" class="form-control" />
+                <span asp-validation-for="ClaimDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HasFileAttachment" /> @Html.DisplayNameFor(model => model.HasFileAttachment)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="FileContent" class="control-label"></label>
+                <input asp-for="FileContent" class="form-control" />
+                <span asp-validation-for="FileContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
