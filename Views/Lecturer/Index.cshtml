@@ -1,5 +1,18 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Lecturer Home";
 }
+
+<h2>Lecturer Dashboard</h2>
+
+<p>
+    Welcome, Lecturer. You can either view your claims or submit a new one.
+</p>
+
+<div>
+    <a href="@Url.Action("ViewClaims", "Lecturer")">
+        <button class="btn btn-primary">View Claims</button>
+    </a>
+    <a href="@Url.Action("SubmitClaim", "Lecturer")">
+        <button class="btn btn-success">Submit Claim</button>
+    </a>
+</div>

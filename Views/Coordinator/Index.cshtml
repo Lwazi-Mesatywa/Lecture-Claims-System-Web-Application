@@ -1,5 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model  
+
+<h2>Coordinator Dashboard</h2>
+
+<form method="post" class="form-inline">
+    <div class="form-group">
+        <label for="MinHoursWorked">Minimum Hours Worked:</label>
+        <input type="number" class="form-control" id="MinHoursWorked" name="MinHoursWorked" value="@Model.MinHoursWorked" />
+    </div>
+
+    <div class="form-group">
+        <label for="MaxHourlyRate">Maximum Hourly Rate:</label>
+        <input type="number" class="form-control" id="MaxHourlyRate" name="MaxHourlyRate" value="@Model.MaxHourlyRate" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Process Claims</button>
+</form>
+
+<h3>Claims List</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lecturer Username</th>
+            <th>Claim Date</th>
+            <th>Hours Worked</th>
+            <th>Hourly Rate</th>
+            <th>Amount</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model.Claims)
+        {
+            <tr>
+                <td>@claim.LecturerUsername</td>
+                <td>@claim.ClaimDate.ToShortDateString()</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.HourlyRate</td>
+                <td>@claim.Amount</td>
+                <td>@claim.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>

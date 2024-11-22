@@ -1,6 +1,6 @@
 ﻿using Lecture_Claims_System_Web_Application.Models;
 using Microsoft.AspNetCore.Mvc;
-using Lecturer_Monthly_Claims__ST10092086;
+using Lecture_Claims_System_Web_Application;
 
 namespace Lecture_Claims_System_Web_Application.Controllers
 {

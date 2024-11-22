@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lecturer_Monthly_Claims__ST10092086
+namespace Lecture_Claims_System_Web_Application
 {
     public class UserManager
     {

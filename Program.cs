@@ -4,6 +4,8 @@ namespace Lecture_Claims_System_Web_Application
     {
         public static void Main(string[] args)
         {
+            ClaimRepository.Instance.PreloadClaims();
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.

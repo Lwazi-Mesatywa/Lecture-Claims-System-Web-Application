@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lecturer_Monthly_Claims__ST10092086
+namespace Lecture_Claims_System_Web_Application
 {
     public class Claim
     {
@@ -36,11 +36,12 @@ namespace Lecturer_Monthly_Claims__ST10092086
         // Parameterless constructor for object initializers
         public Claim() { }
 
-        public Claim(string lecturerUsername, DateTime claimDate, double amount, string status,
-                 bool hasFileAttachment, byte[] fileContent, string notes)
+        public Claim(string lecturerUsername, DateTime claimDate, double hoursWorked, double hourlyRate, double amount, string status, bool hasFileAttachment, byte[] fileContent, string notes)
         {
             LecturerUsername = lecturerUsername;
             ClaimDate = claimDate;
+            HoursWorked = hoursWorked;
+            HourlyRate = hourlyRate;
             Amount = amount;
             Status = status;
             HasFileAttachment = hasFileAttachment;
